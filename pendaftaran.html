@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="img/png" href="images/icon.png" sizes="16x16" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/pendaftaran.css">
+    <title>My Website - Home</title>
+</head>
+<body>
+    <header>
+        <h1>Selamat Datang Di Halaman Web Saya</h1>
+    </header>
+        <nav>
+            <ul>
+                <li><a href="index.html" onclick="showPage('home')">Home</a></li>
+                <li><a href="profil.html" onclick="showPage('profil')">Profil</a></li>
+                <li><a href="tentang.html" onclick="showPage('tentang')">Tentang Saya</a></li>
+                <li><a href="jadwal.html" onclick="showPage('jadwal')">Jadwal Perkuliahan</a></li>
+                <li><a href="hobi.html" onclick="showPage('hobi')">Hobi</a></li>
+                <li><a href="pendaftaran.html" onclick="showPage('pendaftaran')">Pendaftaran</a></li>
+            </ul>
+        </nav>
+        <section id="pendaftaran" class="content pendaftaran">
+            <div class="form-box">
+                <fieldset>
+                    <legend>Formulir Pendaftaran</legend>
+                    <div class="notification" id="registrationNotification"></div>
+                    <form id="registrationForm" action="submit.php" method="post">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nama">Nama:</label>
+                                <input type="text" id="nama" name="nama" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tempat_lahir">Tempat Lahir:</label>
+                                <input type="text" id="tempat_lahir" name="tempat_lahir" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tanggal_lahir">Tanggal Lahir:</label>
+                                <input type="date" id="tanggal_lahir" name="tanggal_lahir" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="umur">Umur:</label>
+                                <input type="number" id="umur" name="umur" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="alamat">Alamat:</label>
+                                <textarea id="alamat" name="alamat" rows="4" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="no_telepon">No Telepon:</label>
+                                <input type="text" id="no_telepon" name="no_telepon">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="submit" value="Submit">
+                                <input type="reset" value="Reset">
+                            </div>
+                        </div>
+                    </form>
+                </fieldset>
+            </div>
+        </section>        
+    </main>
+    <script>
+        function showPage(pageId) {
+            var sections = document.querySelectorAll('main section');
+            sections.forEach(function(section) {
+                if (section.id === pageId) {
+                    section.style.display = 'block';
+                    section.classList.add('active');
+                } else {
+                    section.style.display = 'none';
+                    section.classList.remove('active');
+                }
+            });
+        }
+
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+           event.preventDefault(); // Mencegah formulir dikirim secara default
+
+           // Menampilkan pemberitahuan
+           var notification = document.getElementById("registrationNotification");
+           notification.style.display = "block";
+           notification.textContent = "Anda telah terdaftar";
+
+           // Anda dapat menambahkan logika lainnya di sini, seperti pengiriman data melalui AJAX
+        });
+
+        // Menambahkan event listener untuk tombol reset
+        document.getElementById("registrationForm").addEventListener("reset", function() {
+        var notification = document.getElementById("registrationNotification");
+        notification.style.display = "none"; // Menyembunyikan pemberitahuan saat tombol reset ditekan
+        });
+    </script>
+    <footer>
+        <p>&copy; 2024 Cantikka May Aristianti. 234311010.</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/cantikkamay_?igsh=MW53cjB5ZzI1MjA1dw==" target="_blank"><img src="images/kisspng-logo-computer-icons-white-instagram-5b2d14ce1f3324.1314696615296811021278.jpg" alt="Instagram"></a>
+            <a href="mailto:cantikkamayaristianti@gmail.com" target="_blank"><img src="images/png-transparent-computer-icons-email-barber-logo-angle-rectangle-triangle.png" alt="Email"></a>
+            <a href="https://www.tiktok.com/@mayyyaristian?_t=8lBs9NPm4y9&_r=1" target="_blank"><img src="images/png-transparent-tiktok-logo-icon.png" alt="TikTok"></a>
+        </div>
+    </footer>    
+</body>
+</html>
